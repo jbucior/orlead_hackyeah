@@ -5,7 +5,10 @@ import Router from 'vue-router';
 
 import Login from '@/views/Login';
 import Index from '@/views/Index';
-import Dashboard from '@/views/Dashboard';
+import Statistics from '@/views/Dashboard';
+import AddVehicle from '@/views/AddVehicle';
+import Map from '@/views/Map';
+import Road from '@/views/Road';
 
 Vue.use(Router);
 
@@ -18,9 +21,24 @@ const router = new Router({
       component: Index,
       children: [
         {
-          path: '/dashboard',
-          name: 'dashboard',
-          component: Dashboard,
+          path: '/dodaj-pojazd',
+          name: 'add-vehicle',
+          component: AddVehicle,
+        },
+        {
+          path: '/map',
+          name: 'map',
+          component: Map,
+        },
+        {
+          path: '/check-road',
+          name: 'road',
+          component: Road,
+        },
+        {
+          path: '/statistics',
+          name: 'statistics',
+          component: Statistics,
         },
       ],
     },

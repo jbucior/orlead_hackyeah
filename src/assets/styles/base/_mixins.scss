@@ -1,0 +1,145 @@
+$tablet-width: 768px;
+$tablet-big-width: 992px;
+$desktop-width: 1200px;
+$fullhd-width: 1900px;
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+@mixin tablet-big {
+  @media (min-width: #{$tablet-big-width}) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+@mixin fullhd {
+  @media (min-width: #{$fullhd-width}) {
+    @content;
+  }
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+@mixin transform($args...) {
+  -webkit-transform: $args;
+  -moz-transform: $args;
+  -ms-transform: $args;
+  -o-transform: $args;
+  transform: $args;
+}
+@mixin box-shadow($args...) {
+  -webkit-box-shadow: $args;
+  -moz-box-shadow: $args;
+  box-shadow: $args;
+}
+
+@mixin linear-gradient($color-from, $color-to, $type: vertical) {
+  @if $color-from and $color-to {
+
+  $alpha: alpha($color-to);
+  @if $alpha < 1 {
+    $color-rgb: change_color($color, $alpha: 1);
+    background-color: $color-rgb;
+  }
+  @else {
+    background-color: $color-to;
+  }
+
+	$ie-from: ie-hex-str($color-from);
+	$ie-to: ie-hex-str($color-to);
+
+  $webkit: 'left top, left bottom';
+  $spec: 'top';
+  $ie: 0;
+
+  @if $type == vertical {
+     $webkit: 'left top, left bottom';
+     $spec: 'top';
+     $ie: 0;
+  }
+  @if $type == horizontal {
+     $webkit: 'left top, right top';
+     $spec: 'to right';
+     $ie: 1;
+  }
+  @if $type == left-right {
+     $webkit: 'left top, right bottom';
+     $spec: '135deg';
+     $ie: 1;
+  }
+  @if $type == right-left {
+     $webkit: 'left bottom, right top';
+     $spec: '45deg';
+     $ie: 1;
+  }
+
+  background-image: -webkit-gradient($type, #{$webkit}, from($color-from), to($color-to));
+  background-image: -webkit-linear-gradient(#{$spec}, $color-from, $color-to);
+  background-image: linear-gradient(#{$spec}, $color-from, $color-to);
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$ie-from}', endColorstr='#{$ie-to}', GradientType=#{$ie});
+
+  }
+}
+
+@mixin gradient-border($color1, $color2, $border-width, $direction) {
+  border: none;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(#{$direction}, $color1 0%, $color2 100%),
+                    linear-gradient(#{$direction}, $color1 0%, $color2 100%);
+
+  @if $direction == 'to right' or $direction == 'to left' {
+    @if $direction == 'to right' {
+      border-left: $border-width solid $color1;
+      border-right: $border-width solid $color2;
+    } @else {
+      border-left: $border-width solid $color2;
+      border-right: $border-width solid $color1;
+    }
+    background-position: 0 0, 0 100%;
+    background-size: 100% $border-width;
+  }
+
+  @if $direction == 'to top' or $direction == 'to bottom' {
+    @if $direction == 'to top' {
+      border-top: $border-width solid $color2;
+      border-bottom: $border-width solid $color1;
+    } @else {
+      border-top: $border-width solid $color1;
+      border-bottom: $border-width solid $color2;
+    }
+    background-position: 0 0, 100% 0;
+    background-size: $border-width 100%;
+  }
+}
+
+@mixin text-gradient($dir, $from, $to) {
+  background: -webkit-linear-gradient($dir, $from, $to);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin styled-scrollbar() {
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #fff;
+  }
+  &::-webkit-scrollbar {
+    width: 8px;
+    background-color: #F5F5F5;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #ddd;
+  }
+}

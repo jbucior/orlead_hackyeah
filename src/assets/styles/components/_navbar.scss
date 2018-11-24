@@ -1,0 +1,11 @@
+.navbar {
+  &__menu {
+    padding: 0 40px;
+  }
+  &__logo {
+    float: right !important;
+    img {
+      height: 40px;
+    }
+  }
+}

@@ -7,4 +7,9 @@
       height: 40px;
     }
   }
+  .navbar-collapse {
+    @include desktop {
+      justify-content: flex-end;
+    }
+  }
 }

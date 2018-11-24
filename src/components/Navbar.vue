@@ -1,5 +1,8 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+
+
     <a class="navbar-brand navbar__brand" href="#">
       <img class="navbar__logo" src="~assets/img/orlen.png" alt="">
     </a>
@@ -26,6 +29,8 @@
           <router-link class="nav-item nav-link" :to="{ name: 'statistics' }">Statystyki</router-link>
         </li>
       </ul>
+    </div>
+
     </div>
   </nav>
 </template>

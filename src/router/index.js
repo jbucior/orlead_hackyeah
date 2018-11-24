@@ -26,17 +26,17 @@ const router = new Router({
           component: AddVehicle,
         },
         {
-          path: '/map',
+          path: '/mapa',
           name: 'map',
           component: Map,
         },
         {
-          path: '/check-road',
+          path: '/sprawdz-dojazd',
           name: 'road',
           component: Road,
         },
         {
-          path: '/statistics',
+          path: '/statystyki',
           name: 'statistics',
           component: Statistics,
         },

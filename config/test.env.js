@@ -4,5 +4,5 @@ const devEnv = require('./dev.env');
 
 module.exports = merge(devEnv, {
   NODE_ENV: '"testing"',
-  SERVER_URL: 'http://staging.ttmbpm5pc5.us-west-2.elasticbeanstalk.com/',
+  SERVER_URL: 'https://hack-yeaaah.herokuapp.com/apipie/api',
 })

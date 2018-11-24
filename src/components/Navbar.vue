@@ -11,19 +11,19 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <router-link :to="{ name: 'home' }">Home</router-link>
+          <router-link class="nav-item nav-link" :to="{ name: 'home' }">Home</router-link>
         </li>
         <li class="nav-item">
-          <router-link :to="{ name: 'add-vehicle' }">Dodaj pojazd</router-link>
+          <router-link class="nav-item nav-link" :to="{ name: 'add-vehicle' }">Dodaj pojazd</router-link>
         </li>
         <li class="nav-item">
-          <router-link :to="{ name: 'map' }">Mapa</router-link>
+          <router-link class="nav-item nav-link" :to="{ name: 'map' }">Mapa</router-link>
         </li>
         <li class="nav-item">
-          <router-link :to="{ name: 'road' }">Sprawdź dojazd</router-link>
+          <router-link class="nav-item nav-link" :to="{ name: 'road' }">Sprawdź dojazd</router-link>
         </li>
         <li class="nav-item">
-          <router-link :to="{ name: 'statistics' }">Statystyki</router-link>
+          <router-link class="nav-item nav-link" :to="{ name: 'statistics' }">Statystyki</router-link>
         </li>
       </ul>
     </div>

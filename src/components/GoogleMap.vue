@@ -5,7 +5,41 @@
     </div>
 
     <b-modal ref="modalAddEvent" id="modal1" title="ADD AN EVENT" :hide-footer="true">
-      <add-event></add-event>
+      <div class="add-event">
+        <div class="container-fluid">
+          <div class="row">
+
+            <div class="col-12 col-xl-10 offset-xl-1">
+
+              <el-form ref="form1" label-position="top" :model="event" label-width="120px">
+                <el-form-item label="Description of the occurance" type="textarea"
+                :rows="2" :class="{'error-show': $v.event.name.$error }">
+                  <el-input v-model="$v.event.name.$model"></el-input>
+                  <div class="error" v-if="!$v.event.name.required">Field is required</div>
+                </el-form-item>
+
+                <el-form-item label="Passable road narrowed by(in cm)" :class="{'error-show': $v.event.width.$error }">
+                  <el-input v-model="$v.event.width.$model"></el-input>
+                  <div class="error" v-if="!$v.event.width.required">Field is required</div>
+                  <div class="error" v-if="!$v.event.width.integer">Value must be a number</div>
+                </el-form-item>
+
+                <el-form-item label="Max height of the passable road(in cm)"
+                :class="{'error-show': $v.event.height.$error }">
+                  <el-input v-model="$v.event.height.$model"></el-input>
+                  <div class="error" v-if="!$v.event.height.required">Field is required</div>
+                  <div class="error" v-if="!$v.event.height.integer">Value must be a number</div>
+                </el-form-item>
+
+                <el-button type="primary mx-auto d-block" @click="sendEvent()">Submit</el-button>
+
+              </el-form>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
     </b-modal>
 
     <b-btn class="modal-button" v-b-modal.modal2>Add new place</b-btn>
@@ -19,18 +53,39 @@
 
 <script>
 import adminApi from '@/api/v1/admin';
-import AddEvent from '@/components/AddEvent';
+import { required, integer } from 'vuelidate/lib/validators';
 import AddPlace from '@/components/AddPlace';
 
 export default {
-  components: { AddEvent, AddPlace },
+  components: { AddPlace },
   name: 'google-map',
   props: ['name'],
   data() {
     return {
+      event: {
+        name: '',
+        width: 0,
+        height: 0,
+      },
       mapName: this.name + '-map',
       roads: [],
+      roadId: '',
     };
+  },
+  validations: {
+    event: {
+      name: {
+        required,
+      },
+      width: {
+        required,
+        integer,
+      },
+      height: {
+        required,
+        integer,
+      },
+    },
   },
   created() {
   },
@@ -60,7 +115,7 @@ export default {
           path: this.roads[i].path,
           geodesic: true,
           strokeColor: color,
-          strokeOpacity: 1.0,
+          strokeOpacity: '0.9' + this.roads[i].id,
           strokeWeight: 5,
         });
 
@@ -68,7 +123,7 @@ export default {
 
         google.maps.event.addListener(roadPath, 'click', function(h) {
            vm.$refs.modalAddEvent.show();
-           console.log(roadPath.De.geometry.bounds);
+           vm.roadId = roadPath.De.geometry.bounds.poly.style.strokeOpacity * 10000 - 9000;
         });
       }
     });
@@ -77,6 +132,23 @@ export default {
   methods: {
     showModal () {
       this.$refs.modalAddEvent.show();
+    },
+    sendEvent() {
+      adminApi.events.create({
+        road_id: this.roadId,
+        width: 100,
+        height: 100,
+      }).then((resp) => {
+        this.$message({
+          message: 'Success!',
+          type: 'success',
+        });
+      }).catch((resp) => {
+        this.$message({
+          message: 'Error, try again!',
+          type: 'warning',
+        });
+      });
     },
   },
 };

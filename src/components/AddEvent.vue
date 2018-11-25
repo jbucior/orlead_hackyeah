@@ -72,13 +72,11 @@ export default {
           message: 'Success!',
           type: 'success',
         });
-        console.log(resp);
       }).catch((resp) => {
         this.$message({
           message: 'Error, try again!',
           type: 'warning',
         });
-        console.log(resp);
       });
     },
   },

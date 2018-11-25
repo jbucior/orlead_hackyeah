@@ -13,6 +13,11 @@ export default {
       return axios.get(ROADS_INDEX_URL);
     },
   },
+  events: {
+    create() {
+      return axios.post(EVENTS_INDEX_URL, data);
+    },
+  },
   nodes: {
     show(params) {
       return axios.get(NODES_INDEX_URL, { params });

@@ -30,7 +30,7 @@ Vue.component('pulse-loader', PulseLoader);
 Vue.component('alert', Alert);
 
 // Axios
-axios.defaults.baseURL = `${process.env.SERVER_URL}/api/v1`;
+axios.defaults.baseURL = `${process.env.SERVER_URL}`;
 
 /* eslint-disable no-new */
 new Vue({

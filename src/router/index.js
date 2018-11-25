@@ -17,28 +17,26 @@ const router = new Router({
       path: '/',
       name: 'home',
       component: Index,
-      children: [
-        {
-          path: '/dodaj-pojazd',
-          name: 'add-vehicle',
-          component: AddVehicle,
-        },
-        {
-          path: '/mapa',
-          name: 'map',
-          component: Map,
-        },
-        {
-          path: '/sprawdz-dojazd',
-          name: 'road',
-          component: Road,
-        },
-        {
-          path: '/statystyki',
-          name: 'statistics',
-          component: Statistics,
-        },
-      ],
+    },
+    {
+      path: '/add-vehicle',
+      name: 'add-vehicle',
+      component: AddVehicle,
+    },
+    {
+      path: '/map',
+      name: 'map',
+      component: Map,
+    },
+    {
+      path: '/check-road',
+      name: 'road',
+      component: Road,
+    },
+    {
+      path: '/statistics',
+      name: 'statistics',
+      component: Statistics,
     },
     {
       path: '/login',

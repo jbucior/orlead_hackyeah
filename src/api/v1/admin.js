@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // URL and endpoint constants
-const NODES_INDEX_URL = 'nodes/';
+const NODES_INDEX_URL = 'nodes/path';
 const ROADS_INDEX_URL = 'roads/';
 const PLACES_INDEX_URL = 'places/';
 const VEHICLES_INDEX_URL = 'vehicles/';
@@ -14,8 +14,8 @@ export default {
     },
   },
   nodes: {
-    show(data) {
-      return axios.get(NODES_INDEX_URL, data);
+    show(params) {
+      return axios.get(NODES_INDEX_URL, { params });
     },
   },
   places: {
@@ -27,8 +27,8 @@ export default {
     },
   },
   vehicles: {
-    show() {
-      return axios.get(VEHICLES_INDEX_URL);
+    show(params) {
+      return axios.get(VEHICLES_INDEX_URL, { params });
     },
     create(data) {
       return axios.post(VEHICLES_INDEX_URL, data);

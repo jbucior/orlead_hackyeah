@@ -20,9 +20,6 @@
           <router-link class="nav-item nav-link" :to="{ name: 'add-vehicle' }">Add a vehicle</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-item nav-link" :to="{ name: 'map' }">Map</router-link>
-        </li>
-        <li class="nav-item">
           <router-link class="nav-item nav-link" :to="{ name: 'road' }">Check a route</router-link>
         </li>
         <li class="nav-item">

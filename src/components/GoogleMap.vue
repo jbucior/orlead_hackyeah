@@ -48,7 +48,14 @@ export default {
       this.roads = resp.data.roads;
 
       for(let i=0; i<this.roads.length; i++) {
-        const color = this.roads[i].open ? 'green' : 'red';
+        let color = 'green';
+        if(this.roads[i].events) {
+          color = 'orange';
+        }
+        if (this.roads[i].closed) {
+          color = 'red';
+        }
+        // const color = this.roads[i].open ? 'green' : 'red';
         const roadPath = new google.maps.Polyline({
           path: this.roads[i].path,
           geodesic: true,

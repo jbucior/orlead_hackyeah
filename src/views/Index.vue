@@ -1,16 +1,19 @@
 <template>
   <main class="page">
-    <transition name="fade" mode="out-in">
-      <router-view/>
-    </transition>
+    <div class="container-fluid">
+      <google-map name="example"/>
+    </div>
   </main>
 </template>
 
 <script>
+import GoogleMap from '@/components/GoogleMap';
 
 export default {
+  components: { GoogleMap },
   data() {
     return {
+
     };
   },
 };

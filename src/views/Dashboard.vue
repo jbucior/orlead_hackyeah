@@ -43,7 +43,7 @@ export default {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         datasets: [
           {
-            label: 'Przejazdy',
+            // label: 'Przejazdy',
             backgroundColor: 'rgba(71,111,191,0.7)',
             data: [40, 39, 10, 40, 39, 80, 40],
           },

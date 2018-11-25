@@ -19,7 +19,6 @@
 </template>
 
 <script>
-// TODO Adjust this alert to sitewide alert format
 export default {
   props: ['alert', 'errors'],
 };

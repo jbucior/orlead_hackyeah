@@ -39,18 +39,3 @@ h5 {
 label {
   margin-bottom: 0;
 }
-//errors
-.el-input {
-  margin-bottom: 30px;
-}
-.error {
-  display: none;
-  height: 30px;
-  &:nth-child(2){
-    margin-top: -30px;
-  }
-}
-.error-show .error {
-  display: block;
-  color: red;
-}

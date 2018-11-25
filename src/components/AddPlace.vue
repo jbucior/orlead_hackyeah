@@ -4,7 +4,7 @@
       <div class="row">
 
         <div class="col-12">
-          <h1 class="text-center">Add a Place</h1>
+          <h1 class="text-center page__title--modal">Add a Place</h1>
         </div>
 
         <div class="col-12 col-xl-10 offset-xl-1">

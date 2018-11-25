@@ -17,16 +17,16 @@
           <router-link class="nav-item nav-link" :to="{ name: 'home' }">Home</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-item nav-link" :to="{ name: 'add-vehicle' }">Dodaj pojazd</router-link>
+          <router-link class="nav-item nav-link" :to="{ name: 'add-vehicle' }">Add a vehicle</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-item nav-link" :to="{ name: 'map' }">Mapa</router-link>
+          <router-link class="nav-item nav-link" :to="{ name: 'map' }">Map</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-item nav-link" :to="{ name: 'road' }">Sprawdź dojazd</router-link>
+          <router-link class="nav-item nav-link" :to="{ name: 'road' }">Check a route</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-item nav-link" :to="{ name: 'statistics' }">Statystyki</router-link>
+          <router-link class="nav-item nav-link" :to="{ name: 'statistics' }">Statistics</router-link>
         </li>
       </ul>
     </div>

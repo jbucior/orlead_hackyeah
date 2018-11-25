@@ -1,3 +1,15 @@
 .page {
   margin-top: 10px;
+  &__title {
+    margin: 50px auto;
+    @media (min-width:1200px) {
+      margin: 70px auto;
+    }
+    &--modal {
+      margin: 30px auto;
+      @media (min-width:1200px) {
+        margin: 40px auto;
+      }
+    }
+  }
 }

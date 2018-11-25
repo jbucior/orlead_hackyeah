@@ -6,7 +6,7 @@
   display: none;
   height: 30px;
   &:nth-child(2){
-    margin-top: -30px;
+    margin-top: -35px;
   }
 }
 .error-show .error {
@@ -16,6 +16,7 @@
 
 .el-form-item {
   text-align: center;
+  margin-bottom: 0px;
   &__label {
     color: black;
     font-size: 18px;

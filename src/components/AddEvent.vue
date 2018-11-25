@@ -3,10 +3,6 @@
     <div class="container-fluid">
       <div class="row">
 
-        <div class="col-12">
-          <h1 class="text-center page__title--modal">Add an Event</h1>
-        </div>
-
         <div class="col-12 col-xl-10 offset-xl-1">
 
           <el-form ref="form1" label-position="top" :model="event" label-width="120px">

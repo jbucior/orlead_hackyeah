@@ -1,11 +1,29 @@
 <template>
-  <div class="google-map" :id="mapName"></div>
+  <div class="google-map-component">
+    <div>
+      <div class="google-map" :id="mapName"></div>
+    </div>
+
+    <b-modal ref="modalAddEvent" id="modal1" title="ADD AN EVENT" :hide-footer="true">
+      <add-event></add-event>
+    </b-modal>
+
+    <b-btn class="modal-button" v-b-modal.modal2>Add new place</b-btn>
+    <!-- Modal Component -->
+    <b-modal id="modal2" title="ADD A PLACE" :hide-footer="true">
+      <add-place></add-place>
+    </b-modal>
+  </div>
+
 </template>
 
 <script>
 import adminApi from '@/api/v1/admin';
+import AddEvent from '@/components/AddEvent';
+import AddPlace from '@/components/AddEvent';
 
 export default {
+  components: { AddEvent, AddPlace },
   name: 'google-map',
   props: ['name'],
   data() {
@@ -24,6 +42,8 @@ export default {
     };
     const map = new google.maps.Map(element, options);
 
+    const vm = this;
+
     adminApi.roads.index().then((resp) => {
       console.log(resp);
       this.roads = resp.data.roads;
@@ -41,11 +61,17 @@ export default {
         roadPath.setMap(map);
 
         google.maps.event.addListener(roadPath, 'click', function(h) {
+           vm.$refs.modalAddEvent.show();
            console.log(roadPath.De.geometry.bounds);
         });
       }
     });
 
+  },
+  methods: {
+    showModal () {
+      this.$refs.modalAddEvent.show();
+    },
   },
 };
 </script>

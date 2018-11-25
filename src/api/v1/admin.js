@@ -26,5 +26,9 @@ export default {
     show() {
       return axios.get(VEHICLES_INDEX_URL);
     },
+    create(data) {
+      console.log('api');
+      return axios.post(VEHICLES_INDEX_URL, data);
+    },
   },
 };

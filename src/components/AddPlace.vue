@@ -2,11 +2,7 @@
   <div class="add-place">
     <div class="container-fluid">
       <div class="row">
-
-        <div class="col-12">
-          <h1 class="text-center page__title--modal">Add a Place</h1>
-        </div>
-
+        
         <div class="col-12 col-xl-10 offset-xl-1">
 
           <el-form ref="form2" label-position="top" :model="place" label-long="120px">

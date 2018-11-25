@@ -20,7 +20,7 @@
 <script>
 import adminApi from '@/api/v1/admin';
 import AddEvent from '@/components/AddEvent';
-import AddPlace from '@/components/AddEvent';
+import AddPlace from '@/components/AddPlace';
 
 export default {
   components: { AddEvent, AddPlace },
@@ -45,7 +45,6 @@ export default {
     const vm = this;
 
     adminApi.roads.index().then((resp) => {
-      console.log(resp);
       this.roads = resp.data.roads;
 
       for(let i=0; i<this.roads.length; i++) {

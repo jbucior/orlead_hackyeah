@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-// import store from '@/store';
-
 import Login from '@/views/Login';
 import Index from '@/views/Index';
 import Statistics from '@/views/Dashboard';

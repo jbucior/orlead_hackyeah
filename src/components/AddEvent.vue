@@ -25,7 +25,7 @@
               <div class="error" v-if="!$v.event.height.integer">Value must be a number</div>
             </el-form-item>
 
-            <el-button type="primary mx-auto d-block" @click="submitForm('form1')">Submit</el-button>
+            <el-button type="primary mx-auto d-block" @click="createEvent()">Submit</el-button>
 
           </el-form>
 
@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import adminApi from '@/api/v1/admin';
 import { required, integer } from 'vuelidate/lib/validators';
 
 export default {
@@ -62,6 +63,23 @@ export default {
         required,
         integer,
       },
+    },
+  },
+  methods: {
+    createEvent() {
+      adminApi.events.create(this.event).then((resp) => {
+        this.$message({
+          message: 'Success!',
+          type: 'success',
+        });
+        console.log(resp);
+      }).catch((resp) => {
+        this.$message({
+          message: 'Error, try again!',
+          type: 'warning',
+        });
+        console.log(resp);
+      });
     },
   },
 };

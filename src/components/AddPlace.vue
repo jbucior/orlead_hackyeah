@@ -24,7 +24,7 @@
               <div class="error" v-if="!$v.place.lat.decimal">Value must be a decimal number</div>
             </el-form-item>
 
-            <el-button type="primary mx-auto d-block" @click="submitForm('form2')">Submit</el-button>
+            <el-button type="primary mx-auto d-block" @click="createPlace()">Submit</el-button>
 
           </el-form>
 
@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import adminApi from '@/api/v1/admin';
 import { required, decimal } from 'vuelidate/lib/validators';
 
 export default {
@@ -43,8 +44,8 @@ export default {
     return {
       place: {
         name: '',
-        long: 0,
-        lat: 0,
+        long: 52.586505,
+        lat: 19.668419,
       },
     };
   },
@@ -61,6 +62,23 @@ export default {
         required,
         decimal,
       },
+    },
+  },
+  methods: {
+    createPlace() {
+      adminApi.places.create(this.place).then((resp) => {
+        this.$message({
+          message: 'Success!',
+          type: 'success',
+        });
+        console.log(resp);
+      }).catch((resp) => {
+        this.$message({
+          message: 'Error, try again!',
+          type: 'warning',
+        });
+        console.log(resp);
+      });
     },
   },
 };

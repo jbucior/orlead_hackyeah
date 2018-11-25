@@ -5,6 +5,7 @@ const NODES_INDEX_URL = 'nodes/';
 const ROADS_INDEX_URL = 'roads/';
 const PLACES_INDEX_URL = 'places/';
 const VEHICLES_INDEX_URL = 'vehicles/';
+const EVENTS_INDEX_URL = 'events/';
 
 export default {
   roads: {
@@ -21,14 +22,24 @@ export default {
     index() {
       return axios.get(PLACES_INDEX_URL);
     },
+    create(data) {
+      return axios.post(PLACES_INDEX_URL, data);
+    },
   },
   vehicles: {
     show() {
       return axios.get(VEHICLES_INDEX_URL);
     },
     create(data) {
-      console.log('api');
       return axios.post(VEHICLES_INDEX_URL, data);
+    },
+  },
+  events: {
+    show() {
+      return axios.get(EVENTS_INDEX_URL);
+    },
+    create(data) {
+      return axios.post(EVENTS_INDEX_URL, data);
     },
   },
 };

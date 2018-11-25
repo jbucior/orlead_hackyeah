@@ -32,6 +32,12 @@
               <div class="error" v-if="!$v.vehicle.height.integer">Value must be a number</div>
             </el-form-item>
 
+            <el-form-item label="Vehicle weight in kg" :class="{'error-show': $v.vehicle.weight.$error }">
+              <el-input v-model="$v.vehicle.weight.$model"></el-input>
+              <div class="error" v-if="!$v.vehicle.weight.required">Field is required</div>
+              <div class="error" v-if="!$v.vehicle.weight.integer">Value must be a number</div>
+            </el-form-item>
+
             <el-button type="primary mx-auto d-block"
               @click="createVehicle()" :disabled="!(!$v.vehicle.$invalid)">Submit</el-button>
 
@@ -61,6 +67,7 @@ export default {
         plate_number: '',
         width: 0,
         height: 0,
+        weight: 0,
       },
     };
   },
@@ -80,6 +87,10 @@ export default {
         required,
         integer,
       },
+      weight: {
+        required,
+        integer,
+      }
     },
   },
   methods: {
